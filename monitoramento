@@ -1,0 +1,7 @@
+## http://www.tecmint.com/how-to-monitor-user-activity-with-psacct-or-acct-tools/
+## Requerimentos
+# sudo apt-get install acct
+# sudo accton on
+
+## e mais tarde...
+# sa --percentages --separate-times
