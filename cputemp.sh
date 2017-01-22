@@ -9,5 +9,5 @@ temp1=$(cat /sys/class/hwmon/hwmon0/temp1_input)
 temp1=$(awk "BEGIN {print $temp1/1000}")
 
 #Header:
-#Date, I2C/SMBus data (°C), Axp209 Sensor (°C), Thermal Zone "temp1" (°C)
-echo $(date +%Y-%m-%d-%T) "," $cel "," $ax "," $temp1 
+#Date, Time, I2C/SMBus data (°C), Axp209 Sensor (°C), Thermal Zone "temp1" (°C)
+echo $(date +%Y-%m-%d,%T) "," $cel "," $ax "," $temp1 
