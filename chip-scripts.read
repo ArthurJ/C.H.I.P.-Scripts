@@ -1,0 +1,59 @@
+# ------Primeiro Acesso-----------------
+# screen /dev/ttyACM0   # Para Acessar via USB
+# nmtui                 # Para configurar a internet
+# --------------------------------------
+
+# ------1º Acesso remoto----------------
+apt-get update && apt-get dist-upgrade -y && apt-get upgrade -y
+
+apt-get install python3 python3-pip htop ssh vim git gcc ntfs-3g postfix zsh -y
+
+pip install speedtest-cli
+# --------------------------------------
+
+
+# -----Mount On Boot--------------------
+mkdir /media/Storage
+
+#device	mountpoint	fstype	options	dump	fsck
+/dev/sda1	 /media/Storage	 ntfs-3g	 defaults	 0	 1	>> /etc/fstab 
+# --------------------------------------
+
+
+
+# --Monitoramento Básico----------------
+# echo $PATH, para saber quais variaveis de ambiente acrescentar ao cron
+
+crontab -e
+
+# * * * * * ./C.H.I.P.-Scripts/cputemp.sh >> /media/Storage/Arthur/Temperature-log.csv
+#13,28,43,58 * * * * speedtest --csv | awk -v OFS="," -F"," '{print $4, $1, $3, $2, $5, $6, $7/1048576, $8/1048576}' >> /media/Storage/Arthur/Speed-Log.csv 
+# --------------------------------------
+
+
+# -----PLEX-----------------------------
+# Fonte: https://www.element14.com/community/community/raspberry-pi/raspberrypi_projects/blog/2016/03/11/a-more-powerful-plex-media-server-using-raspberry-pi-3
+ 
+sudo apt-get install apt-transport-https -y --force-yes  
+
+wget -O - https://dev2day.de/pms/dev2day-pms.gpg.key  | sudo apt-key add -  
+
+echo "deb https://dev2day.de/pms/ jessie main" | sudo tee /etc/apt/sources.list.d/pms.list  
+
+sudo apt-get update && sudo apt-get install plexmediaserver -y   
+
+
+# --------------------------------------
+
+
+
+ 
+# ---------UTILIDADES-------------------
+# hostname -I
+# lsblk
+
+# ---------TODO-------------------------
+#FIX LOCALE
+#Botar NoIP pra funcionar
+#Arranjar outras coisas pra fazer
+
