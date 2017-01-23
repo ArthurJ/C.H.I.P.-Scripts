@@ -15,8 +15,8 @@ pip install speedtest-cli
 # -----Mount On Boot--------------------
 mkdir /media/Storage
 
-#device	mountpoint	fstype	options	dump	fsck
-/dev/sda1	 /media/Storage	 ntfs-3g	 defaults	 0	 1	>> /etc/fstab 
+echo \# device '\t' mountpoint '\t' fstype '\t' options '\t' dump '\t' fsck > /etc/fstab
+echo /dev/sda1 '\t' /media/Storage '\t' ntfs-3g '\t' defaults '\t' 0 '\t' 1	>> /etc/fstab 
 # --------------------------------------
 
 
@@ -41,8 +41,6 @@ wget -O - https://dev2day.de/pms/dev2day-pms.gpg.key  | sudo apt-key add -
 echo "deb https://dev2day.de/pms/ jessie main" | sudo tee /etc/apt/sources.list.d/pms.list  
 
 sudo apt-get update && sudo apt-get install plexmediaserver -y   
-
-
 # --------------------------------------
 
 
@@ -56,4 +54,5 @@ sudo apt-get update && sudo apt-get install plexmediaserver -y
 #FIX LOCALE
 #Botar NoIP pra funcionar
 #Arranjar outras coisas pra fazer
+# --------------------------------------
 
