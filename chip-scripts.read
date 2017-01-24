@@ -8,16 +8,18 @@
 # ------1º Acesso remoto----------------
 apt-get update && apt-get dist-upgrade -y && apt-get upgrade -y
 
-apt-get install python3 python3-pip htop ssh vim git gcc ntfs-3g postfix zsh -y
+apt-get install python3 python3-pip locales htop ssh vim git gcc ntfs-3g postfix zsh -y
 
 pip install speedtest-cli
+sudo dpkg-reconfigure locales && sudo locale-gen
 
 #Criação de chaves SSH, ajustes do vim, ajustes do GIT, ajustes de senha e de sh
 
 git clone git@github.com:ArthurJ/C.H.I.P.-Scripts.git scripts
 chmod 744 -R scripts
 
-timedatectl set-timezone America/Sao_Paulo
+sudo dpkg-reconfigure tzdata
+#timedatectl set-timezone America/Sao_Paulo
 timedatectl set-ntp 1
 # --------------------------------------
 
