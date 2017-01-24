@@ -68,6 +68,20 @@ shutdown -r 0
 
 
 
+
+# -------Config No-IP-------------------
+mkdir noip && cd noip
+wget http://www.no-ip.com/client/linux/noip-duc-linux.tar.gz
+tar vzxf noip-duc-linux.tar.gz
+cd  noip-2.1.9-1
+make
+make install
+sudo /usr/local/bin/noip2
+sudo noip2 -S
+# --------------------------------------
+
+
+
  
 # ---------UTILIDADES-------------------
 # hostname -I
