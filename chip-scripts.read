@@ -21,6 +21,11 @@ chmod 744 -R scripts
 sudo dpkg-reconfigure tzdata
 #timedatectl set-timezone America/Sao_Paulo
 timedatectl set-ntp 1
+
+#ssh-keygen... (com os parametros corretos, ver no github)
+#pegar a chave privada gerada e guardar
+#dar append com a chave publica no ~/.ssh/authorized_keys
+#desativar acesso ssh via password, PAM e challenge no /etc/sshd/sshd_config
 # --------------------------------------
 
 
