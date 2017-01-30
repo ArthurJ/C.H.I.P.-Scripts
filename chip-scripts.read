@@ -54,7 +54,7 @@ crontab -e
 
 # E acrescenatr as linhas abaixo, descomentadas
 # * * * * * ./scripts/cputemp.sh >> /media/Storage/Arthur/Temperature-log.csv
-#13,28,43,58 * * * * speedtest --csv | awk -v OFS="," -F"," '{print $4, $1, $3, $2, $5, $6, $7/1048576, $8/1048576}' >> /media/Storage/Arthur/Speed-Log.csv 
+#13,28,43,58 * * * * speedtest --csv | awk -v OFS="," -F"," '{print $4, $1, $3, $2, $5, $6, $7/1048576, $8/1048576}' >> /media/Storage/Arthur/Speed-Log.csv ; if [ ! $? -eq 0 ]; then; shutdown -r 0 ; fi
 # --------------------------------------
 
 
