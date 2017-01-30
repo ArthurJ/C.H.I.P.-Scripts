@@ -13,7 +13,9 @@ apt-get install python3 python3-pip locales htop ssh vim git gcc ntfs-3g postfix
 pip install speedtest-cli
 sudo dpkg-reconfigure locales && sudo locale-gen
 
-#Criação de chaves SSH, ajustes do vim, ajustes do GIT, ajustes de senha e de sh
+#Criação de chaves SSH, ajustes do vim, ajustes do GIT e de sh
+
+passwd
 
 git clone git@github.com:ArthurJ/C.H.I.P.-Scripts.git scripts
 chmod 744 -R scripts
@@ -22,10 +24,32 @@ sudo dpkg-reconfigure tzdata
 #timedatectl set-timezone America/Sao_Paulo
 timedatectl set-ntp 1
 
-#ssh-keygen... (com os parametros corretos, ver no github)
-#pegar a chave privada gerada e guardar
-#dar append com a chave publica no ~/.ssh/authorized_keys
+#-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+ssh-keygen -t rsa -b 4096
+# Gerar COM SENHA
+# Copiar a chave privada para usar como meio de acesso no celular e PC
+
+ssh-keygen -t rsa -b 4096 -C "meu_email@gmail.com"
+# Gerar com esse nome: ~/.ssh/id_rsa_github
+# E SEM SENHA
+
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa
+ssh-add ~/.ssh/id_rsa_github
+
+cat .ssh/id_rsa.pub >> .ssh/authorized_keys                                                                                                                             
+cat .ssh/id_rsa_github.pub >> .ssh/authorized_keys
+
 #desativar acesso ssh via password, PAM e challenge no /etc/sshd/sshd_config
+
+touch ~/.ssh/config
+## Coloque isso no config
+#host github.com
+# HostName github.com
+# IdentityFile ~/.ssh/id_rsa_github
+# User git
+#-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
 # --------------------------------------
 
 
@@ -54,7 +78,7 @@ crontab -e
 
 # E acrescenatr as linhas abaixo, descomentadas
 # * * * * * ./scripts/cputemp.sh >> /media/Storage/Arthur/Temperature-log.csv
-#13,28,43,58 * * * * speedtest --csv | awk -v OFS="," -F"," '{print $4, $1, $3, $2, $5, $6, $7/1048576, $8/1048576}' >> /media/Storage/Arthur/Speed-Log.csv ; if [ ! $? -eq 0 ]; then; shutdown -r 0 ; fi
+#13,28,43,58 * * * * speedtest --csv | awk -v OFS="," -F"," '{print $4, $1, $3, $2, $5, $6, $7/1048576, $8/1048576}' >> /media/Storage/Arthur/Speed-Log.csv ; if [ ! $? -eq 0 ]; then shutdown -r 0 ; fi
 # --------------------------------------
 
 
@@ -94,12 +118,3 @@ sudo noip2 -S
 # hostname -I
 # lsblk
 # --------------------------------------
-
-
-
-# ---------TODO-------------------------
-#FIX LOCALE
-#Botar NoIP pra funcionar
-#Arranjar outras coisas pra fazer
-# --------------------------------------
-
