@@ -1,0 +1,8 @@
+/.project
+/.settings
+/target
+.idea
+__pycache__
+*~
+*.log
+*.tar.gz
